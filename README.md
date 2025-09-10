@@ -87,8 +87,6 @@ NEXT_PUBLIC_API_URL=http://localhost:5000
 | GET     | `/widgets`               | Liste aller gespeicherten Widgets |
 | POST    | `/widgets`               | Neues Widget erstellen (`location`) |
 | DELETE  | `/widgets/:id`           | Widget löschen                     |
-| GET     | `/widgets/weather?       | Aktuelles Wetter für eine Stadt (mit Cache) |
-              location=Berlin`
 
 ---
 
@@ -127,13 +125,13 @@ NEXT_PUBLIC_API_URL=http://localhost:5000
                 └─────────┬─────────┘
                           │
           ┌───────────────┴─────────────────┐
-          │                                   │
-          ▼                                   ▼
+          │                                 │
+          ▼                                 ▼
  ┌─────────────────┐                 ┌─────────────────────┐
- │   MongoDB        │                 │   Weather API       │
- │   Widgets (CRUD) │                 │   Open-Meteo        │
- │   _id, location  │                 │   (Geocoding +      │
- │   createdAt      │                 │   Current Weather)  │
+ │   MongoDB       │                 │   Weather API       │
+ │   Widgets (CRUD)│                 │   Open-Meteo        │
+ │   _id, location │                 │   (Geocoding +      │
+ │   createdAt     │                 │   Current Weather)  │
  └─────────────────┘                 └─────────────────────┘
                                           ▲
                                           │
