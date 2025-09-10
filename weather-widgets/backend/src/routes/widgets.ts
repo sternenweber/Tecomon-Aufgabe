@@ -1,9 +1,12 @@
 import { Router } from 'express';
+import { createWidget, deleteWidget, listWidgets, getWeatherForLocation } from '../controllers/widgets.controller';
 
 const r = Router();
 
-r.get('/', (_req, res) => {
-  res.json([{ id: 1, location: 'Berlin (stub)' }]);
-});
+r.get('/', listWidgets);
+r.post('/', createWidget);
+r.delete('/:id', deleteWidget);
+
+r.get('/weather', getWeatherForLocation);
 
 export default r;
