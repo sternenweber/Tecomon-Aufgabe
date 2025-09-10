@@ -108,12 +108,37 @@ NEXT_PUBLIC_API_URL=http://localhost:5000
 
 ---
 
-## 📄 Architekturüberblick
+## Architekturüberblick
 
-```mermaid
-flowchart TD
-    A[Frontend\nNext.js (TS)\nDashboard UI] -->|REST API Calls| B[Backend\nExpress (TS)\nControllers, Services, Models]
-    B --> C[MongoDB\nWidgets (CRUD)\n_id, location, createdAt]
-    B --> D[Weather API\nOpen-Meteo\n(Geocoding + Current Weather)]
-    D --> E[(In-Memory Cache\n5 min TTL)]
-```
+                ┌───────────────────┐
+                │   Frontend        │
+                │   Next.js (TS)    │
+                │   Dashboard UI    │
+                └─────────┬─────────┘
+                          │  (REST API Calls)
+                          ▼
+                ┌───────────────────┐
+                │   Backend         │
+                │   Express (TS)    │
+                │   Controllers,    │
+                │   Services, Models│
+                └─────────┬─────────┘
+                          │
+          ┌───────────────┴─────────────────┐
+          │                                 │
+          ▼                                 ▼
+ ┌─────────────────┐                 ┌─────────────────────┐
+ │   MongoDB       │                 │   Weather API       │
+ │   Widgets (CRUD)│                 │   Open-Meteo        │
+ │   _id, location │                 │   (Geocoding +      │
+ │   createdAt     │                 │   Current Weather)  │
+ └─────────────────┘                 └─────────────────────┘
+                                          ▲
+                                          │
+                                          │ (5 min TTL Cache)
+                                          │
+                                    ┌─────────────┐
+                                    │   In-Memory │
+                                    │   Cache     │
+                                    └─────────────┘
+---
