@@ -28,6 +28,33 @@ Frontend: Next.js (TypeScript) · Backend: Express (TypeScript) · Database: Mon
 - NPM oder Yarn
 - Git
 
+### 0. MongoDB starten (lokaler Projekt-Ordner)
+
+Um MongoDB-Probleme mit Berechtigungen zu vermeiden, wird die Datenbank lokal im Projekt gespeichert.
+
+1. Erstelle den Ordner mongo-data im Projektstamm:
+```bash
+mkdir mongo-data
+```
+
+2. Starte MongoDB im Root-Projektordner mit diesem Ordner als Speicherort:
+```bash
+mongod --dbpath ./mongo-data
+```
+
+3. Lasse dieses Terminal geöffnet – MongoDB läuft jetzt unter
+```bash
+mongodb://localhost:27017/widgets
+```
+
+Hinweis:
+
+Die Daten liegen in `mongo-data/` (wird via `.gitignore` ausgeschlossen).
+
+Wenn du die Datenbank zurücksetzen willst, kannst du den Ordner einfach löschen.
+
+---
+
 ### 1. Backend starten
 
 ```bash
