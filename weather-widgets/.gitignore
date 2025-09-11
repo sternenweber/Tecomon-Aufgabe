@@ -27,3 +27,6 @@ coverage
 # Editor folders
 .vscode/
 .idea/
+
+# MongoDB local database files
+mongo-data/
